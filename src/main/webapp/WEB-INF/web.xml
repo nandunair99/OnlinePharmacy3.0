@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://Java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<welcome-file-list>
+		<welcome-file>ShowCustomerHome</welcome-file>
+
+	</welcome-file-list>
+	
+
+
+	<!-- show records -->
+	<servlet>
+		<servlet-name>ShowAllCategoryServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.ShowAllCategoryServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowAllCategoryServlet</servlet-name>
+		<url-pattern>/ShowAllCategory</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- update records -->
+	<servlet>
+		<servlet-name>UpdateCategoryFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.UpdateCategoryFormServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateCategoryFormServlet</servlet-name>
+		<url-pattern>/updateCategoryForm</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>updateCategoryActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.UpdateCategoryActionServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateCategoryActionServlet</servlet-name>
+		<url-pattern>/updateCategoryAction</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>UpdateCategoryValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.category.UpdateCategoryValidationFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UpdateCategoryValidationFilter</filter-name>
+		<url-pattern>/updateCategoryAction</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>RemoveCategoryValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.category.RemoveCategoryValidationFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RemoveCategoryValidationFilter</filter-name>
+		<url-pattern>/RemoveCategoryAction</url-pattern>
+	</filter-mapping>
+
+
+	<!-- add category -->
+	<servlet>
+		<servlet-name>AddCategoryFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.AddCategoryFormServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddCategoryFormServlet</servlet-name>
+		<url-pattern>/AddCategoryForm</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AddCategoryActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.AddCategoryActionServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddCategoryActionServlet</servlet-name>
+		<url-pattern>/AddCategoryAction</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>AddCategoryValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.category.AddCategoryValidationFilter
+		</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>AddCategoryValidationFilter</filter-name>
+		<url-pattern>/AddCategoryAction</url-pattern>
+	</filter-mapping>
+
+
+
+
+
+	<!-- remove category -->
+
+	<servlet>
+		<servlet-name>RemoveCategoryActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.RemoveCategoryActionServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveCategoryActionServlet</servlet-name>
+		<url-pattern>/RemoveCategoryAction</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- ShowAllMedicineServlet -->
+	<servlet>
+		<servlet-name>ShowAllMedicineServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.ShowAllMedicineServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowAllMedicineServlet</servlet-name>
+		<url-pattern>/ShowAllMedicine</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- add Medicine -->
+	<servlet>
+		<servlet-name>AddMedicineFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.AddMedicineFormServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddMedicineFormServlet</servlet-name>
+		<url-pattern>/AddMedicineForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddMedicineActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.AddMedicineActionServlet
+		</servlet-class>
+		<multipart-config>
+			<max-file-size>20848820</max-file-size>
+			<max-request-size>418018841</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddMedicineActionServlet</servlet-name>
+		<url-pattern>/AddMedicineAction</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>AddMedicineValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.medicine.AddUpdateMedicineValidationFilter
+		</filter-class>
+	</filter>
+	<filter>
+		<filter-name>UpdateMedicineValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.medicine.AddUpdateMedicineValidationFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AddMedicineValidationFilter</filter-name>
+		<url-pattern>/AddMedicineAction</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UpdateMedicineValidationFilter</filter-name>
+		<url-pattern>/UpdateMedicineAction</url-pattern>
+	</filter-mapping>
+
+	<!-- update Medicine -->
+	<servlet>
+		<servlet-name>UpdateMedicineFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.UpdateMedicineFormServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateMedicineFormServlet</servlet-name>
+		<url-pattern>/UpdateMedicineForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateMedicineActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.UpdateMedicineActionServlet
+		</servlet-class>
+		<multipart-config>
+			<max-file-size>20848820</max-file-size>
+			<max-request-size>418018841</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateMedicineActionServlet</servlet-name>
+		<url-pattern>/UpdateMedicineAction</url-pattern>
+	</servlet-mapping>
+
+	<!-- remove Medicine -->
+
+	<servlet>
+		<servlet-name>RemoveMedicineActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.RemoveMedicineActionServlet
+		</servlet-class>
+		<multipart-config>
+			<max-file-size>20848820</max-file-size>
+			<max-request-size>418018841</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveMedicineActionServlet</servlet-name>
+		<url-pattern>/RemoveMedicineAction</url-pattern>
+	</servlet-mapping>
+
+	<!-- View Medicine -->
+	<servlet>
+		<servlet-name>ViewMedicineFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.ViewMedicineFormServlet
+		</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewMedicineFormServlet</servlet-name>
+		<url-pattern>/ViewMedicineForm</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Add Test -->
+	<servlet>
+		<servlet-name>AddTestFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.AddTestFormServlet
+		</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTestFormServlet</servlet-name>
+		<url-pattern>/AddTestForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddTestActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.AddTestActionServlet
+		</servlet-class>
+		<multipart-config>
+			<max-file-size>20848820</max-file-size>
+			<max-request-size>418018841</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTestActionServlet</servlet-name>
+		<url-pattern>/AddTestAction</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>AddTestValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.test.AddTestValidationFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AddTestValidationFilter</filter-name>
+		<url-pattern>/AddTestAction</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>ShowAllTestServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.ShowAllTestServlet
+		</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowAllTestServlet</servlet-name>
+		<url-pattern>/ShowAllTest</url-pattern>
+	</servlet-mapping>
+
+	<!-- Update test -->
+	<servlet>
+		<servlet-name>UpdateTestFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.UpdateTestFormServlet
+		</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateTestFormServlet</servlet-name>
+		<url-pattern>/UpdateTestForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateTestActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.UpdateTestActionServlet
+		</servlet-class>
+		<multipart-config>
+			<max-file-size>20848820</max-file-size>
+			<max-request-size>418018841</max-request-size>
+			<file-size-threshold>1048576</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateTestActionServlet</servlet-name>
+		<url-pattern>/UpdateTestAction</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>UpdateTestValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.test.UpdateTestValidationFilter
+		</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>UpdateTestValidationFilter</filter-name>
+		<url-pattern>/UpdateTestAction</url-pattern>
+	</filter-mapping>
+	
+	<!-- show home -->
+	<servlet>
+		<servlet-name>ShowAdminHomeServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.ShowAdminHomeServlet
+		</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowAdminHomeServlet</servlet-name>
+		<url-pattern>/ShowAdminHome</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RemoveTestActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.RemoveTestActionServlet
+		</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RemoveTestActionServlet</servlet-name>
+		<url-pattern>/RemoveTestAction</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ViewTestFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.ViewTestFormServlet
+		</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ViewTestFormServlet</servlet-name>
+		<url-pattern>/ViewTestForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description>
+		</description>
+		<display-name>ShowCustomerHomeServlet</display-name>
+		<servlet-name>ShowCustomerHomeServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.ShowCustomerHomeServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ShowCustomerHomeServlet</servlet-name>
+		<url-pattern>/ShowCustomerHome</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowCustomerMedicineServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.ShowCustomerMedicineServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ShowCustomerMedicineServlet</servlet-name>
+		<url-pattern>/ShowCustomerMedicine</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+
+		<servlet-name>ShowCustomerTestServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.ShowCustomerTestServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ShowCustomerTestServlet</servlet-name>
+		<url-pattern>/ShowCustomerTest</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagePopularCategoryFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.ManagePopularCategoryFormServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ManagePopularCategoryFormServlet</servlet-name>
+		<url-pattern>/ManagePopularCategoryForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagePopularCategoryActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.category.ManagePopularCategoryActionServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ManagePopularCategoryActionServlet</servlet-name>
+		<url-pattern>/ManagePopularCategoryAction</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagePopularMedicineFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.ManagePopularMedicineFormServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ManagePopularMedicineFormServlet</servlet-name>
+		<url-pattern>/ManagePopularMedicineForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagePopularMedicineActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.medicine.ManagePopularMedicineActionServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ManagePopularMedicineActionServlet</servlet-name>
+		<url-pattern>/ManagePopularMedicineAction</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagePopularTestFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.ManagePopularTestFormServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ManagePopularTestFormServlet</servlet-name>
+		<url-pattern>/ManagePopularTestForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ManagePopularTestActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.test.ManagePopularTestActionServlet
+		</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ManagePopularTestActionServlet</servlet-name>
+		<url-pattern>/ManagePopularTestAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>RegisterActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.RegisterActionServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>RegisterActionServlet</servlet-name>
+		<url-pattern>/RegisterAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		
+		<servlet-name>RegisterFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.RegisterFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterFormServlet</servlet-name>
+		<url-pattern>/RegisterForm</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>RegisterValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.customer.RegisterValidationFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>RegisterValidationFilter</filter-name>
+		<url-pattern>/RegisterAction</url-pattern>
+	</filter-mapping>
+	
+	
+	<servlet>
+		<servlet-name>LoginFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.LoginFormServlet</servlet-class>
+	</servlet>
+	
+	
+	
+	<servlet-mapping>
+		<servlet-name>LoginFormServlet</servlet-name>
+		<url-pattern>/LoginForm</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>LoginActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.LoginActionServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>LoginActionServlet</servlet-name>
+		<url-pattern>/LoginAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<filter>
+		
+		<filter-name>LoginValidationFilter</filter-name>
+		<filter-class>com.narola.pharmacy.customer.LoginValidationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginValidationFilter</filter-name>
+		<url-pattern>/LoginAction</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>AddCartActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.AddCartActionServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>AddCartActionServlet</servlet-name>
+		<url-pattern>/AddCartAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>LogoutActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.LogoutActionServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LogoutActionServlet</servlet-name>
+		<url-pattern>/LogoutAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ShowCartFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.ShowCartFormServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>ShowCartFormServlet</servlet-name>
+		<url-pattern>/ShowCartForm</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>DeleteCartItemActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.DeleteCartItemActionServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DeleteCartItemActionServlet</servlet-name>
+		<url-pattern>/DeleteCartItemAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>UpdateCartQuantityActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.UpdateCartQuantityActionServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UpdateCartQuantityActionServlet</servlet-name>
+		<url-pattern>/UpdateCartQuantityAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<description>
+		</description>
+		<display-name>PlaceOrderActionServlet</display-name>
+		<servlet-name>PlaceOrderActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.PlaceOrderActionServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>PlaceOrderActionServlet</servlet-name>
+		<url-pattern>/PlaceOrderAction</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ShowSummaryFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.ShowSummaryFormServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ShowSummaryFormServlet</servlet-name>
+		<url-pattern>/ShowSummaryForm</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>ShowCheckoutFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.ShowCheckoutFormServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>ShowCheckoutFormServlet</servlet-name>
+		<url-pattern>/ShowCheckoutForm</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ValidateCustomerPaymentForm</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.ValidateCustomerPaymentForm</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>ValidateCustomerPaymentForm</servlet-name>
+		<url-pattern>/ValidateCustomerPayment</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ShowPastOrdersFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.customer.ShowPastOrdersFormServlet</servlet-class>
+	</servlet>
+	
+	
+	
+	
+	<servlet-mapping>
+		<servlet-name>ShowPastOrdersFormServlet</servlet-name>
+		<url-pattern>/ShowPastOrdersForm</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ShowAllOrdersFormServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.ShowAllOrdersFormServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ShowAllOrdersFormServlet</servlet-name>
+		<url-pattern>/ShowAllOrdersForm</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>UpdateOrderStatusActionServlet</servlet-name>
+		<servlet-class>com.narola.pharmacy.UpdateOrderStatusActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateOrderStatusActionServlet</servlet-name>
+		<url-pattern>/UpdateOrderStatusAction</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

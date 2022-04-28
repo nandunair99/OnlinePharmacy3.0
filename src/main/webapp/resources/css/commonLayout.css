@@ -1,0 +1,62 @@
+.mainArea {
+  position: absolute;
+  width: 84%;
+  background-color: white;
+  color:black;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-left:240px;
+  padding:50px;
+  overflow:auto;
+  
+}
+
+input[type=submit]
+{
+	background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+body {
+  background-color: white;
+  
+}
+
+.headingArea {
+  height:100px;
+}
+
+table
+{
+width:100%;
+}
+
+a
+{
+color:black;
+}
+a:link, a:visited {
+  background-color: transparent;
+  color: black;
+  border: 2px solid #33B2FF;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius:5px;
+}
+a:hover, a:active {
+  background-color: #33B2FF;
+  color: white;
+  border-radius:5px;
+}
