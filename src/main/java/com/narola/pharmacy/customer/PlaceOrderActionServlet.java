@@ -1,8 +1,6 @@
 package com.narola.pharmacy.customer;
 
 import java.io.IOException;
-import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.narola.pharmacy.PharmacyDBException;
 import com.narola.pharmacy.paymentgateway.OrderRequestEntity;
 import com.narola.pharmacy.paymentgateway.RazerPaymentgateway;
-import com.narola.pharmacy.utility.Constant;
 
 public class PlaceOrderActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
