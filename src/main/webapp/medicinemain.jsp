@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.narola.pharmacy.medicine.MedicineBean"%>
+<%@ page import="com.narola.pharmacy.medicine.model.MedicineBean"%>
 <%@ page import="com.narola.pharmacy.utility.Constant"%>
 <%@ page import="java.io.OutputStream"%>
 <%@ page import="java.util.ArrayList"%>
@@ -31,7 +31,7 @@ function load_ajax(medId,action)
     
 }
 </script>
-<link rel="stylesheet" href="resources/css/commonLayout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/commonLayout.css">
 </head>
 <body>
 	<jsp:include page="sidebar.jsp"></jsp:include>
@@ -41,7 +41,7 @@ function load_ajax(medId,action)
 			<h1>Medicines</h1>
 		</div>
 		<div>
-			<a href="${pageContext.request.contextPath}${Constant.URL_MEDICINE_ADD_FORM}">Add Medicine</a>
+			<a href="${pageContext.request.contextPath}/medicine${Constant.URL_MEDICINE_ADD_FORM}">Add Medicine</a>
 		</div>
 
 		<table class="table table-borderless">

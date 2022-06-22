@@ -1,7 +1,7 @@
 <%@ page import="com.narola.pharmacy.category.CategoryDAO"%>
 <%@ page import="com.narola.pharmacy.utility.Constant"%>
 <%@ page import="com.narola.pharmacy.category.CategoryBean"%>
-<%@ page import="com.narola.pharmacy.medicine.MedicineBean"%>
+<%@ page import="com.narola.pharmacy.medicine.model.MedicineBean"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.time.LocalDate"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -23,7 +23,7 @@ document.getElementById("quantitytxt").innerText = data;
 
 <script
 	src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
-<link rel="stylesheet" href="resources/css/commonLayout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/commonLayout.css">
 </head>
 <body>
 	<c:import var="sidebar" url="sidebar.jsp" />
@@ -42,14 +42,14 @@ document.getElementById("quantitytxt").innerText = data;
 
 		<div class="superDiv">
 			<form method="post"
-				action="${pageContext.request.contextPath}${Constant.URL_MEDICINE_ADD_ACTION}"
+				action="${pageContext.request.contextPath}/medicine${Constant.URL_MEDICINE_ADD_ACTION}"
 				enctype="multipart/form-data">
 				<table>
 					<tr>
 						<td>
 							<div class="form-group">
 								<label for="categoryName">Category Name:</label> <select
-									name="categoryName" id="categoryName" class="form-control">
+									name="catId" id="categoryName" class="form-control">
 									<c:forEach var="categoryBean"
 										items="${categorydao.showAllCategory()}">
 										<c:if test="${not empty mbean}">
@@ -72,7 +72,7 @@ document.getElementById("quantitytxt").innerText = data;
 						<td>
 							<div class="form-group">
 								<label for="medNametxt">Medicine Name:</label> <input
-									type="text" class="form-control" name="medNametxt"
+									type="text" class="form-control" name="medName"
 									id="medNametxt" placeholder="Enter medicine name..."
 									value="${mbean.getMedName()}">
 							</div>
@@ -88,7 +88,7 @@ document.getElementById("quantitytxt").innerText = data;
 								<c:if test="${mbean.getMedPrice()!=-1.0}">
 									<c:set var="price" value="${mbean.getMedPrice()}" />
 								</c:if>
-								<input type="text" class="form-control" name="medPricetxt"
+								<input type="text" class="form-control" name="medPrice"
 									id="medPricetxt" placeholder="Enter medicine price..."
 									value="${price}">
 							</div>
@@ -104,7 +104,7 @@ document.getElementById("quantitytxt").innerText = data;
 								<c:if test="${mbean.getMedDiscount()!=-1.0}">
 									<c:set var="discount" value="${mbean.getMedDiscount()}" />
 								</c:if>
-								<input type="text" class="form-control" name="medDiscounttxt"
+								<input type="text" class="form-control" name="medDiscount"
 									id="medDiscounttxt" placeholder="Enter medicine discount..."
 									value="${discount}">
 							</div>
@@ -114,7 +114,7 @@ document.getElementById("quantitytxt").innerText = data;
 						<td>
 							<div class="form-group">
 								<label for="medManufacturertxt">Manufacturer:</label> <input
-									type="text" class="form-control" name="medManufacturertxt"
+									type="text" class="form-control" name="medManufacturer"
 									id="medManufacturertxt"
 									placeholder="Enter manufacturer name..."
 									value="${mbean.getMedManufacturer()}">
@@ -125,7 +125,7 @@ document.getElementById("quantitytxt").innerText = data;
 						<td>
 							<div class="form-group">
 								<label for="medDescriptiontxt">Medicine Description:</label>
-								<textarea name="medDescriptiontxt" id="medDescriptiontxt">${mbean.getMedDescription()}</textarea>
+								<textarea name="medDescription" id="medDescriptiontxt">${mbean.getMedDescription()}</textarea>
 							</div>
 						</td>
 					</tr>
@@ -136,7 +136,7 @@ document.getElementById("quantitytxt").innerText = data;
 								<c:set var="mfg" value="${mbean.getMedMfgDate()}" />
 								<c:set var="exp" value="${mbean.getMedExpDate()}" />
 
-								<input type="date" name="medMfgDatetxt" id="medMfgDatetxt"
+								<input type="date" name="medMfgDate" id="medMfgDatetxt"
 									value="${mfg}">
 							</div>
 						</td>
@@ -144,8 +144,8 @@ document.getElementById("quantitytxt").innerText = data;
 					<tr>
 						<td>
 							<div class="form-group">
-								<label for="medExpDatetxt">Exp date:</label> <input type="date"
-									name="medExpDatetxt" id="medExpDatetxt" value="${exp}">
+								<label for="medExpDate">Exp date:</label> <input type="date"
+									name="medExpDatetxt" id="medExpDate" value="${exp}">
 							</div>
 						</td>
 					</tr>
@@ -168,7 +168,7 @@ document.getElementById("quantitytxt").innerText = data;
 								<c:if test="${empty mbean}">
 									<c:set var="qty" value="1" />
 								</c:if>
-								<input type="number" name="quantitytxt" id="quantitytxt" min="1"
+								<input type="number" name="quantity" id="quantitytxt" min="1"
 									value="${qty}">
 							</div>
 						</td>

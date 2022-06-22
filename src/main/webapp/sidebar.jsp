@@ -79,11 +79,11 @@ a:hover, a:active {
 			</div>
 			<hr>
 			<div class="inner-container">
-				<a href="${pageContext.request.contextPath}/ShowAllMedicine">Medicines</a>
+				<a href="${pageContext.request.contextPath}/medicine/ShowAllMedicine">Medicines</a>
 			</div>
 			<hr>
 			<div class="inner-container">
-				<a href="${pageContext.request.contextPath}/ShowAllTest">Tests</a>
+				<a href="${pageContext.request.contextPath}/test/ShowAllTest">Tests</a>
 			</div>
 			<hr>
 			<div class="inner-container">

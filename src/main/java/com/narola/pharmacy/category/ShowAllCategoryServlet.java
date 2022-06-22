@@ -3,7 +3,7 @@ package com.narola.pharmacy.category;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import com.narola.pharmacy.PharmacyDBException;
+import com.narola.pharmacy.exception.PharmacyDBException;
 
 import java.io.*;
 import java.util.List;

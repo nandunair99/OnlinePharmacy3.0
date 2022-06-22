@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import com.narola.pharmacy.PharmacyDBException;
+import com.narola.pharmacy.exception.PharmacyDBException;
 
 public class RemoveCategoryValidationFilter implements Filter {
 

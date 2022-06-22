@@ -1,4 +1,4 @@
-package com.narola.pharmacy;
+package com.narola.pharmacy.home;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -14,13 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.narola.pharmacy.exception.PharmacyDBException;
 import com.narola.pharmacy.category.CategoryBean;
 import com.narola.pharmacy.category.CategoryDAO;
-import com.narola.pharmacy.medicine.MedicineBean;
-import com.narola.pharmacy.medicine.MedicineDAO;
-import com.narola.pharmacy.test.TestBean;
-import com.narola.pharmacy.test.TestDAO;
+import com.narola.pharmacy.medicine.dao.IMedicineDAO;
+import com.narola.pharmacy.medicine.model.MedicineBean;
+import com.narola.pharmacy.test.dao.ITestDAO;
+import com.narola.pharmacy.test.model.TestBean;
 import com.narola.pharmacy.utility.Constant;
+import com.narola.pharmacy.utility.DAOFactory;
 
 /**
  * Servlet implementation class ShowCustomerHomeServlet
@@ -58,16 +60,17 @@ public class ShowCustomerHomeServlet extends HttpServlet {
 			
 		pageSession.setAttribute("currentPage", request.getRequestURL()+qry);
 		
-		
+		ITestDAO testDao = DAOFactory.getInstance().getTestDAO();
 		System.out.println(request.getRequestURL()+qry);
 		try {
+			IMedicineDAO medicineDAO= DAOFactory.getInstance().getMedicineDAO(); 
 			List<CategoryBean> categoryList = CategoryDAO.showAllCategory();
 			request.setAttribute("CategoryList", categoryList);
 			if (request.getParameter("query") == null) {
-				List<MedicineBean> popularMedList = MedicineDAO.showPopularMedicine();
-				List<TestBean> popularTestList = TestDAO.showPopularTest();
+				List<MedicineBean> popularMedList = medicineDAO.showPopularMedicine();
+				List<TestBean> popularTestList = testDao.showPopularTest();
 				List<CategoryBean> popularCategoryList = CategoryDAO.showPopularCategory();
-				List<MedicineBean> discountMedList = MedicineDAO.showDiscountMedicine();
+				List<MedicineBean> discountMedList = medicineDAO.showDiscountMedicine();
 
 				for (MedicineBean medicineBean : discountMedList) {
 					File dir = new File(getServletContext().getRealPath("/") + Constant.MEDICINE_IMG_FOLDER
@@ -113,7 +116,7 @@ public class ShowCustomerHomeServlet extends HttpServlet {
 				String query = request.getParameter("query").toString();
 				if (query.equals("medicine")) // home page must show only medicines
 				{
-					List<MedicineBean> medList = MedicineDAO.showAllMedicine();
+					List<MedicineBean> medList = medicineDAO.showAllMedicine();
 					for(MedicineBean medicineBean:medList)
 					{
 						File dir = new File(getServletContext().getRealPath("/") + Constant.MEDICINE_IMG_FOLDER +medicineBean.getMedId().toString());
@@ -130,7 +133,7 @@ public class ShowCustomerHomeServlet extends HttpServlet {
 				else if (query.equals("search")) // home page must show only searched medicines
 				{
 					String searchString=request.getParameter("searchtxt");
-					List<MedicineBean> medList = MedicineDAO.searchMedicineByName(searchString);
+					List<MedicineBean> medList = medicineDAO.searchMedicineByName(searchString);
 					for(MedicineBean medicineBean:medList)
 					{
 						File dir = new File(getServletContext().getRealPath("/") + Constant.MEDICINE_IMG_FOLDER +medicineBean.getMedId().toString());
@@ -144,7 +147,7 @@ public class ShowCustomerHomeServlet extends HttpServlet {
 					}
 					request.setAttribute("MedicineList", medList);
 					
-					List<TestBean> testList = TestDAO.searchTestByName(searchString);
+					List<TestBean> testList = testDao.searchTestByName(searchString);
 					for(TestBean tbean:testList)
 					{
 						ByteArrayOutputStream bos=new ByteArrayOutputStream();
@@ -161,7 +164,7 @@ public class ShowCustomerHomeServlet extends HttpServlet {
 				}
 				else if (query.equals("test")) // home page must show only tests
 				{
-					List<TestBean> testList = TestDAO.showAllTest();
+					List<TestBean> testList = testDao.showAllTest();
 					for(TestBean tbean:testList)
 					{
 						ByteArrayOutputStream bos=new ByteArrayOutputStream();
@@ -181,7 +184,7 @@ public class ShowCustomerHomeServlet extends HttpServlet {
 					request.setAttribute("CategoryList2", categoryList2);
 				} else {
 					// home page must show the medicines of particular category
-					List<MedicineBean> medList = MedicineDAO.getMedicineByCatid(Integer.valueOf(query));
+					List<MedicineBean> medList = medicineDAO.getMedicineByCatid(Integer.valueOf(query));
 					for(MedicineBean medicineBean:medList)
 					{
 						File dir = new File(getServletContext().getRealPath("/") + Constant.MEDICINE_IMG_FOLDER +medicineBean.getMedId().toString());

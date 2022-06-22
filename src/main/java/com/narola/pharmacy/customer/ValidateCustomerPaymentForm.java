@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.narola.pharmacy.PharmacyDBException;
+import com.narola.pharmacy.exception.PharmacyDBException;
 import com.narola.pharmacy.utility.Constant;
 
 public class ValidateCustomerPaymentForm extends HttpServlet {

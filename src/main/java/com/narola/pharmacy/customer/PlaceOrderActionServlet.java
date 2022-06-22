@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.narola.pharmacy.PharmacyDBException;
+import com.narola.pharmacy.exception.PharmacyDBException;
 import com.narola.pharmacy.paymentgateway.OrderRequestEntity;
 import com.narola.pharmacy.paymentgateway.RazerPaymentgateway;
 

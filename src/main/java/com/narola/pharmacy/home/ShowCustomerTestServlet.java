@@ -1,9 +1,8 @@
-package com.narola.pharmacy;
+package com.narola.pharmacy.home;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,20 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.narola.pharmacy.medicine.MedicineBean;
-import com.narola.pharmacy.medicine.MedicineDAO;
-import com.narola.pharmacy.utility.Constant;
+import com.narola.pharmacy.exception.PharmacyDBException;
+import com.narola.pharmacy.test.dao.ITestDAO;
+import com.narola.pharmacy.test.model.TestBean;
+import com.narola.pharmacy.utility.DAOFactory;
 
 /**
- * Servlet implementation class ShowCustomerMedicineServlet
+ * Servlet implementation class ShowCustomerTestServlet
  */
-public class ShowCustomerMedicineServlet extends HttpServlet {
+public class ShowCustomerTestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ShowCustomerMedicineServlet() {
+	public ShowCustomerTestServlet() {
 		super();
 
 	}
@@ -37,6 +37,7 @@ public class ShowCustomerMedicineServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		ITestDAO testDao = DAOFactory.getInstance().getTestDAO();
 		HttpSession pageSession=request.getSession(false);
 		if(pageSession==null)
 		{
@@ -57,24 +58,27 @@ public class ShowCustomerMedicineServlet extends HttpServlet {
 		
 		System.out.println(request.getRequestURL()+qry);
 
+		TestBean tb;
 		try {
-			Integer medId = Integer.valueOf(request.getParameter("medId"));
-			MedicineBean mb = MedicineDAO.getMedicineById(medId);
-			File dir = new File(getServletContext().getRealPath("/") + Constant.MEDICINE_IMG_FOLDER + medId);
-			File[] list = dir.listFiles();
-			List<String> imagesPath = new ArrayList<>(list.length);
-			for (int i = 0; i < list.length; i++) {
-				imagesPath.add(request.getContextPath() + Constant.MEDICINE_IMG_FOLDER + medId.toString() + "/"
-						+ list[i].getName());
+			Integer testId = Integer.valueOf(request.getParameter("testId"));
+			tb = testDao.getTestById(testId);
+			ByteArrayOutputStream bos=new ByteArrayOutputStream();
+			final byte[] bytes=new byte[1024];
+			int read=0;
+			while((read=tb.getPicStream().read(bytes))!=-1)
+			{
+				bos.write(bytes,0,read);
 			}
-			mb.setImagesPath(imagesPath);
-			request.setAttribute("MedicineBean", mb);
-			RequestDispatcher rd = request.getRequestDispatcher("viewcustomermedicine.jsp");
+			String encode = Base64.getEncoder().encodeToString(bos.toByteArray());
+			tb.setBase64String(encode);
+			request.setAttribute("TestBean", tb);
+			RequestDispatcher rd = request.getRequestDispatcher("viewcustomertest.jsp");
 			rd.forward(request, response);
 		} catch (PharmacyDBException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	/**
@@ -83,7 +87,7 @@ public class ShowCustomerMedicineServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

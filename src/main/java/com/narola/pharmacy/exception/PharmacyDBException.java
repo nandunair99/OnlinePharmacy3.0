@@ -1,4 +1,4 @@
-package com.narola.pharmacy;
+package com.narola.pharmacy.exception;
 
 public class PharmacyDBException extends Exception {
 
