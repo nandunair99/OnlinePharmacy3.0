@@ -13,28 +13,25 @@ import com.narola.pharmacy.medicine.service.IMedicineService;
 import com.narola.pharmacy.utility.Constant;
 import com.narola.pharmacy.utility.ServiceFactory;
 
-public class ManagePopularMedicineActionServlet extends HttpServlet {
+public class RemoveMedicineActionServletbkp extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-
-	public ManagePopularMedicineActionServlet() {
-		super();
-
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
 			IMedicineService medicineService = ServiceFactory.getInstance().getMedicineService();
-			Integer medId = Integer.valueOf(request.getParameter(Constant.CONST_MED_ID));
-			String action = request.getParameter(Constant.CONST_ACTION);
-
-			medicineService.managePopularMedicine(medId, action);
+			int medId = Integer.valueOf(request.getParameter(Constant.CONST_MED_ID));
+			medicineService.deleteMedicine(medId);
+			response.sendRedirect("ShowAllMedicine");
 		} catch (PharmacyServiceException e) {
-			request.setAttribute(Constant.CONST_ERROR_MESSAGE, Constant.ERR_MED_MANAGE_POPULAR);
+
+			request.setAttribute(Constant.CONST_ERROR_MESSAGE, Constant.ERR_MED_UPDATE);
 			RequestDispatcher rd = request.getRequestDispatcher("medicinemain.jsp");
 			rd.forward(request, response);
 		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,5 +39,4 @@ public class ManagePopularMedicineActionServlet extends HttpServlet {
 
 		doGet(request, response);
 	}
-
 }

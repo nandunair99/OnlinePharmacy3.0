@@ -160,7 +160,7 @@
 	<!-- add Medicine -->
 <!--	<servlet>-->
 <!--		<servlet-name>AddMedicineFormServlet</servlet-name>-->
-<!--		<servlet-class>com.narola.pharmacy.medicine.controller.AddMedicineFormServlet-->
+<!--		<servlet-class>com.narola.pharmacy.medicine.controller.AddMedicineFormServletbkp-->
 <!--		</servlet-class>-->
 <!--	</servlet>-->
 <!--	<servlet-mapping>-->
@@ -183,67 +183,67 @@
 <!--		<url-pattern>/AddMedicineAction</url-pattern>-->
 <!--	</servlet-mapping>-->
 
-	<filter>
-		<filter-name>AddMedicineValidationFilter</filter-name>
-		<filter-class>com.narola.pharmacy.medicine.validation.AddUpdateMedicineValidationFilter
-		</filter-class>
-	</filter>
-	<filter>
-		<filter-name>UpdateMedicineValidationFilter</filter-name>
-		<filter-class>com.narola.pharmacy.medicine.validation.AddUpdateMedicineValidationFilter
-		</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>AddMedicineValidationFilter</filter-name>
-		<url-pattern>/AddMedicineAction</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>UpdateMedicineValidationFilter</filter-name>
-		<url-pattern>/UpdateMedicineAction</url-pattern>
-	</filter-mapping>
+<!--	<filter>-->
+<!--		<filter-name>AddMedicineValidationFilter</filter-name>-->
+<!--		<filter-class>com.narola.pharmacy.medicine.validation.AddUpdateMedicineValidationFilter-->
+<!--		</filter-class>-->
+<!--	</filter>-->
+<!--	<filter>-->
+<!--		<filter-name>UpdateMedicineValidationFilter</filter-name>-->
+<!--		<filter-class>com.narola.pharmacy.medicine.validation.AddUpdateMedicineValidationFilter-->
+<!--		</filter-class>-->
+<!--	</filter>-->
+<!--	<filter-mapping>-->
+<!--		<filter-name>AddMedicineValidationFilter</filter-name>-->
+<!--		<url-pattern>/AddMedicineAction</url-pattern>-->
+<!--	</filter-mapping>-->
+<!--	<filter-mapping>-->
+<!--		<filter-name>UpdateMedicineValidationFilter</filter-name>-->
+<!--		<url-pattern>/UpdateMedicineAction</url-pattern>-->
+<!--	</filter-mapping>-->
 
 	<!-- update Medicine -->
-	<servlet>
-		<servlet-name>UpdateMedicineFormServlet</servlet-name>
-		<servlet-class>com.narola.pharmacy.medicine.controller.UpdateMedicineFormServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>UpdateMedicineFormServlet</servlet-name>
-		<url-pattern>/UpdateMedicineForm</url-pattern>
-	</servlet-mapping>
+<!--	<servlet>-->
+<!--		<servlet-name>UpdateMedicineFormServlet</servlet-name>-->
+<!--		<servlet-class>com.narola.pharmacy.medicine.controller.UpdateMedicineFormServlet-->
+<!--		</servlet-class>-->
+<!--	</servlet>-->
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>UpdateMedicineFormServlet</servlet-name>-->
+<!--		<url-pattern>/UpdateMedicineForm</url-pattern>-->
+<!--	</servlet-mapping>-->
 
-	<servlet>
-		<servlet-name>UpdateMedicineActionServlet</servlet-name>
-		<servlet-class>com.narola.pharmacy.medicine.controller.UpdateMedicineActionServlet
-		</servlet-class>
-		<multipart-config>
-			<max-file-size>20848820</max-file-size>
-			<max-request-size>418018841</max-request-size>
-			<file-size-threshold>1048576</file-size-threshold>
-		</multipart-config>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>UpdateMedicineActionServlet</servlet-name>
-		<url-pattern>/UpdateMedicineAction</url-pattern>
-	</servlet-mapping>
+<!--	<servlet>-->
+<!--		<servlet-name>UpdateMedicineActionServlet</servlet-name>-->
+<!--		<servlet-class>com.narola.pharmacy.medicine.controller.UpdateMedicineActionServlet-->
+<!--		</servlet-class>-->
+<!--		<multipart-config>-->
+<!--			<max-file-size>20848820</max-file-size>-->
+<!--			<max-request-size>418018841</max-request-size>-->
+<!--			<file-size-threshold>1048576</file-size-threshold>-->
+<!--		</multipart-config>-->
+<!--	</servlet>-->
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>UpdateMedicineActionServlet</servlet-name>-->
+<!--		<url-pattern>/UpdateMedicineAction</url-pattern>-->
+<!--	</servlet-mapping>-->
 
 	<!-- remove Medicine -->
 
-	<servlet>
-		<servlet-name>RemoveMedicineActionServlet</servlet-name>
-		<servlet-class>com.narola.pharmacy.medicine.controller.RemoveMedicineActionServlet
-		</servlet-class>
-		<multipart-config>
-			<max-file-size>20848820</max-file-size>
-			<max-request-size>418018841</max-request-size>
-			<file-size-threshold>1048576</file-size-threshold>
-		</multipart-config>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RemoveMedicineActionServlet</servlet-name>
-		<url-pattern>/RemoveMedicineAction</url-pattern>
-	</servlet-mapping>
+<!--	<servlet>-->
+<!--		<servlet-name>RemoveMedicineActionServlet</servlet-name>-->
+<!--		<servlet-class>com.narola.pharmacy.medicine.controller.RemoveMedicineActionServletbkp-->
+<!--		</servlet-class>-->
+<!--		<multipart-config>-->
+<!--			<max-file-size>20848820</max-file-size>-->
+<!--			<max-request-size>418018841</max-request-size>-->
+<!--			<file-size-threshold>1048576</file-size-threshold>-->
+<!--		</multipart-config>-->
+<!--	</servlet>-->
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>RemoveMedicineActionServlet</servlet-name>-->
+<!--		<url-pattern>/RemoveMedicineAction</url-pattern>-->
+<!--	</servlet-mapping>-->
 
 	<!-- View Medicine -->
 	<servlet>
@@ -446,16 +446,16 @@
 		<url-pattern>/ManagePopularMedicineForm</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>ManagePopularMedicineActionServlet</servlet-name>
-		<servlet-class>com.narola.pharmacy.medicine.controller.ManagePopularMedicineActionServlet
-		</servlet-class>
-	</servlet>
+<!--	<servlet>-->
+<!--		<servlet-name>ManagePopularMedicineActionServlet</servlet-name>-->
+<!--		<servlet-class>com.narola.pharmacy.medicine.controller.ManagePopularMedicineActionServletbkp-->
+<!--		</servlet-class>-->
+<!--	</servlet>-->
 
-	<servlet-mapping>
-		<servlet-name>ManagePopularMedicineActionServlet</servlet-name>
-		<url-pattern>/ManagePopularMedicineAction</url-pattern>
-	</servlet-mapping>
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>ManagePopularMedicineActionServlet</servlet-name>-->
+<!--		<url-pattern>/ManagePopularMedicineAction</url-pattern>-->
+<!--	</servlet-mapping>-->
 
 	<servlet>
 		<servlet-name>ManagePopularTestFormServlet</servlet-name>

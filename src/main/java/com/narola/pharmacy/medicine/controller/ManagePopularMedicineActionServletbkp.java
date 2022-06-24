@@ -13,25 +13,28 @@ import com.narola.pharmacy.medicine.service.IMedicineService;
 import com.narola.pharmacy.utility.Constant;
 import com.narola.pharmacy.utility.ServiceFactory;
 
-public class RemoveMedicineActionServlet extends HttpServlet {
-
+public class ManagePopularMedicineActionServletbkp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	public ManagePopularMedicineActionServletbkp() {
+		super();
+
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		try {
 			IMedicineService medicineService = ServiceFactory.getInstance().getMedicineService();
-			int medId = Integer.valueOf(request.getParameter(Constant.CONST_MED_ID));
-			medicineService.deleteMedicine(medId);
-			response.sendRedirect("ShowAllMedicine");
-		} catch (PharmacyServiceException e) {
+			Integer medId = Integer.valueOf(request.getParameter(Constant.CONST_MED_ID));
+			String action = request.getParameter(Constant.CONST_ACTION);
 
-			request.setAttribute(Constant.CONST_ERROR_MESSAGE, Constant.ERR_MED_UPDATE);
+			medicineService.managePopularMedicine(medId, action);
+		} catch (PharmacyServiceException e) {
+			request.setAttribute(Constant.CONST_ERROR_MESSAGE, Constant.ERR_MED_MANAGE_POPULAR);
 			RequestDispatcher rd = request.getRequestDispatcher("medicinemain.jsp");
 			rd.forward(request, response);
 		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,4 +42,5 @@ public class RemoveMedicineActionServlet extends HttpServlet {
 
 		doGet(request, response);
 	}
+
 }

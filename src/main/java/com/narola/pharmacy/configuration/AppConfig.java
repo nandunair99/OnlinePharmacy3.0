@@ -11,13 +11,10 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-
-import java.util.List;
-
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = "com.narola.pharmacy")
-public class AppContext{
+public class AppConfig {
 
     @Bean
     public ViewResolver viewResolver() {
@@ -26,9 +23,9 @@ public class AppContext{
         resolver.setSuffix(".jsp");
         return resolver;
     }
+
     @Bean
-    public IMedicineService medicineService()
-    {
+    public IMedicineService medicineService() {
         return ServiceFactory.getInstance().getMedicineService();
     }
 

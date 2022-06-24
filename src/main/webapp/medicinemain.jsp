@@ -73,11 +73,11 @@ function load_ajax(medId,action)
 					</c:if>
 					<td><input type="checkbox" ${popularStatus}
 						onchange='handleChange(this,${mbean.getMedId()});'></td>
-					<td><a href="${pageContext.request.contextPath}${Constant.URL_MEDICINE_UPDATE_FORM}?medId=${mbean.getMedId()}"><span
+					<td><a href="${pageContext.request.contextPath}/medicine${Constant.URL_MEDICINE_UPDATE_FORM}?medId=${mbean.getMedId()}"><span
 							class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a href="${pageContext.request.contextPath}${Constant.URL_MEDICINE_DELETE_ACTION}?medId=${mbean.getMedId()}"><span
+					<td><a href="${pageContext.request.contextPath}/medicine${Constant.URL_MEDICINE_DELETE_ACTION}?medId=${mbean.getMedId()}"><span
 							class="glyphicon glyphicon-trash Delete"></span></a></td>
-					<td><a href="${pageContext.request.contextPath}${Constant.URL_MEDICINE_SINGLE_VIEW}?medId=${mbean.getMedId()}"><span
+					<td><a href="${pageContext.request.contextPath}/medicine/${Constant.URL_MEDICINE_SINGLE_VIEW}?medId=${mbean.getMedId()}"><span
 							class="glyphicon glyphicon-eye-open"></span></a></td>
 				</tr>
 
