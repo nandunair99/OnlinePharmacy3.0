@@ -21,7 +21,17 @@ public class UtilityMethods {
 		String[] urls = url.split("/");
 		return urls[urls.length - 1].trim();
 	}
-
+	public static boolean isNumeric(String strNum) {
+		if (strNum == null) {
+			return false;
+		}
+		try {
+			double d = Double.parseDouble(strNum);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
+	}
 	public static void writeImagesToFolder(String fileName, String destPath, Collection<Part> parts, Integer medId)
 			throws PharmacyServiceException {
 		try {

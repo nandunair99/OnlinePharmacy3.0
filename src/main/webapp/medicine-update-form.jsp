@@ -41,7 +41,7 @@
     </style>
     <script
             src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/commonLayout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/commonLayout.css">
 </head>
 <body>
 <jsp:include page="sidebar.jsp"></jsp:include>

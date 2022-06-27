@@ -8,6 +8,9 @@ import com.narola.pharmacy.utility.ServiceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +26,13 @@ import java.util.List;
 public class MedicineController {
     @Autowired
     private IMedicineService medicineService;
-
+    @Autowired
+    private AddUpdateMedicineValidator addUpdateMedicineValidator;
+    @InitBinder
+    public void initBinder(WebDataBinder binder)
+    {
+        binder.addValidators(addUpdateMedicineValidator);
+    }
     @GetMapping("/ShowAllMedicine")
     public ModelAndView getAllMedicine(HttpServletRequest request, HttpServletResponse response) throws PharmacyServiceException {
         List<MedicineBean> list = medicineService.getAllMedicine(request);
@@ -33,15 +42,20 @@ public class MedicineController {
 
     }
 
-    // @PostMapping("/AddMedicineAction")
+    @PostMapping("/AddMedicineAction")
     @RequestMapping(value = "/AddMedicineAction", method = {RequestMethod.GET, RequestMethod.POST})
-    public String addMedicine(MedicineBean medicineBean, HttpServletRequest request, @RequestParam(name = "medMfgDatetxt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    public String addMedicine(@Validated MedicineBean medicineBean, HttpServletRequest request, @RequestParam(name = "medMfgDatetxt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             LocalDate mfgDate, @RequestParam(name = "medMfgDatetxt") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-                                      LocalDate expDate) throws PharmacyServiceException {
-        medicineBean.setMedMfgDate(mfgDate);
-        medicineBean.setMedExpDate(expDate);
-        medicineService.addMedicine(medicineBean, request);
-        return "redirect:/medicine/ShowAllMedicine";
+                                      LocalDate expDate, BindingResult bindingResult) throws PharmacyServiceException {
+        if(bindingResult.hasErrors()){
+
+        }
+        else {
+            medicineBean.setMedMfgDate(mfgDate);
+            medicineBean.setMedExpDate(expDate);
+            medicineService.addMedicine(medicineBean, request);
+            return "redirect:/medicine/ShowAllMedicine";
+        }
     }
 
     @RequestMapping(value = "/AddMedicineForm", method = {RequestMethod.GET})

@@ -18,6 +18,8 @@ import com.narola.pharmacy.medicine.dao.IMedicineDAO;
 import com.narola.pharmacy.medicine.model.MedicineBean;
 import com.narola.pharmacy.utility.DAOFactory;
 
+import static com.narola.pharmacy.utility.UtilityMethods.isNumeric;
+
 /**
  * Servlet Filter implementation class AddUpdateMedicineValidationFilter
  */
@@ -37,17 +39,7 @@ public class AddUpdateMedicineValidationFilter implements Filter {
 
 	}
 
-	public static boolean isNumeric(String strNum) {
-		if (strNum == null) {
-			return false;
-		}
-		try {
-			double d = Double.parseDouble(strNum);
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
-		return true;
-	}
+
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)

@@ -1,5 +1,8 @@
 package com.narola.pharmacy.medicine.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.Part;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,8 +23,16 @@ public class MedicineBean {
 	private LocalDateTime createdOn;
 	private LocalDateTime updatedOn;
 	private Boolean popular;
-
+	private MultipartFile imagePart;
 	private List<String> imagesPath;
+
+	public MultipartFile getImagePart() {
+		return imagePart;
+	}
+
+	public void setImagePart(MultipartFile imagePart) {
+		this.imagePart = imagePart;
+	}
 
 	public Double getMedDiscountedPrice() {
 		return medDiscountedPrice;

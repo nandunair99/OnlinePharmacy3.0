@@ -23,7 +23,7 @@
 
     <script
             src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/commonLayout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/commonLayout.css">
 </head>
 <body>
 <c:import var="sidebar" url="sidebar.jsp"/>
@@ -155,7 +155,7 @@ ${sidebar}
                     <td>
                         <div class="form-group">
                             <label for="picturetxt">Upload Medicine Image:</label> <input
-                                type="file" class="form-control" name="picturetxt"
+                                type="file" class="form-control" name="imagePart"
                                 id="picturetxt" multiple>
                         </div>
                     </td>
